@@ -15,6 +15,7 @@ Requires:	python-modules
 Requires:	python-pygobject3
 Requires:	python-pyinotify
 Requires:	python-pyxdg
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -23,10 +24,7 @@ Advanced MATE menu.
 %prep
 %setup -q -n mintmenu
 
-%build
-for f in `grep -rl '%{_prefix}/lib/linuxmint/mintMenu' usr`; do
-%{__sed} -i 's,%{_prefix}/lib/linuxmint/mintMenu,%{_datadir}/mate-mintmenu,g' "$f"
-done
+grep -rl '%{_prefix}/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,%{_prefix}/lib/linuxmint/mintMenu,%{_datadir}/mate-mintmenu,g'
 
 %install
 rm -rf $RPM_BUILD_ROOT
