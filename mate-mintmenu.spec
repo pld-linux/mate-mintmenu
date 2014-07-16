@@ -7,9 +7,14 @@ Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.gz
 # Source0-md5:	21e75f32aed47c78cce222a8d9207f1c
 URL:		http://packages.linuxmint.com/pool/main/m/mintmenu/
-BuildRequires:	sed
-Requires:	glib2
+Requires(post,postun):	glib2
 Requires:	mate-panel
+Requires:	python-Xlib
+Requires:	python-matemenu
+Requires:	python-modules
+Requires:	python-pygobject3
+Requires:	python-pyinotify
+Requires:	python-pyxdg
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -19,8 +24,8 @@ Advanced MATE menu.
 %setup -q -n mintmenu
 
 %build
-for f in `grep -rl '/usr/lib/linuxmint/mintMenu' usr`; do
-	%{__sed} -i 's,/usr/lib/linuxmint/mintMenu,%{_datadir}/mate-mintmenu,g' "$f"
+for f in `grep -rl '%{_prefix}/lib/linuxmint/mintMenu' usr`; do
+%{__sed} -i 's,%{_prefix}/lib/linuxmint/mintMenu,%{_datadir}/mate-mintmenu,g' "$f"
 done
 
 %install
