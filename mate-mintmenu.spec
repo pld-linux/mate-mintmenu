@@ -1,11 +1,11 @@
 Summary:	Advanced MATE menu
 Name:		mate-mintmenu
-Version:	5.5.8
+Version:	5.5.9
 Release:	0.1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.gz
-# Source0-md5:	21e75f32aed47c78cce222a8d9207f1c
+# Source0-md5:	bd1c252e8068b14b691b3e3c2e3b7e4b
 URL:		http://packages.linuxmint.com/pool/main/m/mintmenu/
 Requires(post,postun):	glib2
 Requires:	mate-panel
