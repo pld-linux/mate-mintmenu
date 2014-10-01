@@ -1,7 +1,7 @@
 Summary:	Advanced MATE menu
 Name:		mate-mintmenu
 Version:	5.5.9
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.gz
@@ -24,6 +24,7 @@ Advanced MATE menu.
 %prep
 %setup -q -n mintmenu
 
+%{__sed} -i 's,version = commands.getoutput("/usr/lib/linuxmint/common/version.py mintmenu"),version = "%{version}",' usr/lib/linuxmint/mintMenu/mintMenu.py
 grep -rl '%{_prefix}/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,%{_prefix}/lib/linuxmint/mintMenu,%{_datadir}/%{name},g'
 
 %install
