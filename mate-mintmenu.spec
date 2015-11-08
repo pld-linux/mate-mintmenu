@@ -1,4 +1,5 @@
 Summary:	Advanced MATE menu
+Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
 Version:	5.6.5
 Release:	1
@@ -7,7 +8,9 @@ Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.gz
 # Source0-md5:	28d653509875dcc5ef5b94ff957a1634
 URL:		http://packages.linuxmint.com/pool/main/m/mintmenu/
-Requires(post,postun):	glib2
+BuildRequires:	sed >= 4.0
+Requires(post,postun):	glib2 >= 1:2.26
+Requires:	gtk+2 >= 1:2.20
 Requires:	mate-panel
 Requires:	python-Xlib
 Requires:	python-matemenu
@@ -21,6 +24,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Advanced MATE menu.
 
+%description -l pl.UTF-8
+Zaawansowane menu dla MATE.
+
 %prep
 %setup -q -n mintmenu
 
@@ -33,6 +39,9 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}}
 cp -pr usr/lib/linuxmint/mintMenu $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -pr usr/share/{dbus-1,glib-2.0,mate-panel} $RPM_BUILD_ROOT%{_datadir}
 install -p usr/bin/mintmenu $RPM_BUILD_ROOT%{_bindir}
+
+# (build time) to compile *.py
+%{__rm} $RPM_BUILD_ROOT%{_datadir}/%{name}/compile.py
 
 %clean
 rm -rf $RPM_BUILD_ROOT
