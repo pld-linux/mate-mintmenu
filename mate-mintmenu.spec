@@ -1,12 +1,12 @@
 Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
-Version:	5.6.6
+Version:	5.6.7
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
-# Source0-md5:	d57e9dbad6ea3f031fc9f6424407d974
+# Source0-md5:	7d18b8266006d6d0e3f2d8f2a6a1715c
 URL:		http://packages.linuxmint.com/pool/main/m/mintmenu/
 BuildRequires:	sed >= 4.0
 Requires(post,postun):	glib2 >= 1:2.26
