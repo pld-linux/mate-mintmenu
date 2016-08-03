@@ -7,7 +7,7 @@ License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
 # Source0-md5:	a261171dbd1ae4d91980034976c5c2cc
-URL:		http://packages.linuxmint.com/pool/main/m/mintmenu/
+URL:		https://github.com/linuxmint/mintmenu
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
