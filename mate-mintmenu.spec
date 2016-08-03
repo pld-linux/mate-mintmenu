@@ -1,14 +1,16 @@
 Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
-Version:	5.7.0
+Version:	5.7.2
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
-# Source0-md5:	1f3b7a5e403e920f74602a93eb558db7
+# Source0-md5:	a261171dbd1ae4d91980034976c5c2cc
 URL:		http://packages.linuxmint.com/pool/main/m/mintmenu/
 BuildRequires:	sed >= 4.0
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires(post,postun):	glib2 >= 1:2.26
 Requires:	gtk+2 >= 1:2.20
 Requires:	mate-panel
@@ -28,7 +30,8 @@ Advanced MATE menu.
 Zaawansowane menu dla MATE.
 
 %prep
-%setup -q -n mintmenu
+%setup -qc
+mv mintmenu/* .
 
 %{__sed} -i 's,version = commands.getoutput("/usr/lib/linuxmint/common/version.py mintmenu"),version = "%{version}",' usr/lib/linuxmint/mintMenu/mintMenu.py
 grep -rl '%{_prefix}/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,%{_prefix}/lib/linuxmint/mintMenu,%{_datadir}/%{name},g'
