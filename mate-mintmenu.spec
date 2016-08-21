@@ -2,7 +2,7 @@ Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
 Version:	5.7.2
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
@@ -66,7 +66,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/%{name}/mintMenuConfig.py
 %{_datadir}/%{name}/mintMenu.glade
 %attr(755,root,root) %{_datadir}/%{name}/mintMenu.py
-%{_datadir}/%{name}/plugins
+%dir %{_datadir}/%{name}/plugins
+%{_datadir}/%{name}/plugins/*.glade
+%{_datadir}/%{name}/plugins/*.py
 %{_datadir}/%{name}/pointerMonitor.py
 %{_datadir}/%{name}/popup.xml
 %{_datadir}/%{name}/search_engines
