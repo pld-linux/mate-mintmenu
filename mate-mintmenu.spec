@@ -1,12 +1,12 @@
 Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
-Version:	5.7.2
-Release:	2
+Version:	5.7.6
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
-# Source0-md5:	a261171dbd1ae4d91980034976c5c2cc
+# Source0-md5:	d7829ba1044370cd38a2d117b4e58ead
 URL:		https://github.com/linuxmint/mintmenu
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
@@ -20,6 +20,7 @@ Requires:	python-modules
 Requires:	python-pygobject3
 Requires:	python-pyinotify
 Requires:	python-pyxdg
+Requires:	python-setproctitle
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
