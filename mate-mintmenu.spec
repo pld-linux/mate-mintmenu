@@ -1,26 +1,30 @@
 Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
-Version:	5.7.6
+Version:	5.8.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
-# Source0-md5:	d7829ba1044370cd38a2d117b4e58ead
+# Source0-md5:	39e630828b15fc127877d7eee57f0565
 URL:		https://github.com/linuxmint/mintmenu
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires(post,postun):	glib2 >= 1:2.26
-Requires:	gtk+2 >= 1:2.20
-Requires:	mate-panel
+Requires:	gtk+3
+Requires:	gvfs
+Requires:	mate-desktop-libs >= 1.18.0
+Requires:	mate-panel >= 1.18.0
+Requires:	mozo
 Requires:	python-Xlib
 Requires:	python-matemenu
 Requires:	python-modules
 Requires:	python-pygobject3
-Requires:	python-pyinotify
 Requires:	python-pyxdg
 Requires:	python-setproctitle
+Requires:	xdg-utils
+Suggests:	python-pyinotify
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -61,7 +65,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mintmenu
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/applications.list
-%{_datadir}/%{name}/capi.py
 %{_datadir}/%{name}/keybinding.py
 %{_datadir}/%{name}/mintMenuConfig.glade
 %attr(755,root,root) %{_datadir}/%{name}/mintMenuConfig.py
