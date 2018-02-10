@@ -2,7 +2,7 @@ Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
 Version:	5.8.4
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
@@ -45,7 +45,7 @@ grep -rl '%{_prefix}/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,%{_prefi
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}}
 cp -pr usr/lib/linuxmint/mintMenu $RPM_BUILD_ROOT%{_datadir}/%{name}
-cp -pr usr/share/{dbus-1,glib-2.0,mate-panel} $RPM_BUILD_ROOT%{_datadir}
+cp -pr usr/share/{dbus-1,glib-2.0,man,mate-panel,pixmaps} $RPM_BUILD_ROOT%{_datadir}
 install -p usr/bin/mintmenu $RPM_BUILD_ROOT%{_bindir}
 
 # (build time) to compile *.py
@@ -80,4 +80,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/*.svg
 %{_datadir}/dbus-1/services/org.mate.panel.applet.MintMenuAppletFactory.service
 %{_datadir}/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml
+%{_mandir}/man1/mintmenu.1*
 %{_datadir}/mate-panel/applets/org.mate.panel.MintMenuApplet.mate-panel-applet
+%{_pixmapsdir}/mintmenu.svg
