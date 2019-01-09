@@ -20,6 +20,7 @@ Requires:	mate-desktop-libs >= 1.18.0
 Requires:	mate-panel >= 1.18.0
 Requires:	mozo
 Requires:	python-Xlib
+Requires:	python-configobj
 Requires:	python-matemenu
 Requires:	python-modules
 Requires:	python-pygobject3
