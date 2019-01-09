@@ -8,6 +8,7 @@ Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
 # Source0-md5:	514377f50ec415bb4d1d6db9672ba070
 Patch0:		%{name}-icon.patch
+Patch1:		%{name}-disable-apt.patch
 URL:		https://github.com/linuxmint/mintmenu
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
@@ -38,6 +39,7 @@ Zaawansowane menu dla MATE.
 %prep
 %setup -qc
 %patch0 -p1
+%patch1 -p1
 mv mintmenu/* .
 
 %{__sed} -i 's,version = commands.getoutput("/usr/lib/linuxmint/common/version.py mintmenu"),version = "%{version}",' usr/lib/linuxmint/mintMenu/mintMenu.py

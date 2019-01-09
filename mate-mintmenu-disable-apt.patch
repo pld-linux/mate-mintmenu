@@ -1,0 +1,12 @@
+diff -urN mate-mintmenu-5.9.1.orig/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml mate-mintmenu-5.9.1/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml
+--- mate-mintmenu-5.9.1.orig/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml	2019-01-09 23:31:46.713224352 +0100
++++ mate-mintmenu-5.9.1/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml	2019-01-09 23:32:07.569734716 +0100
+@@ -249,7 +249,7 @@
+     </key>
+ 
+     <key type="b" name="use-apt">
+-      <default>true</default>
++      <default>false</default>
+       <summary></summary>
+       <description></description>
+     </key>
