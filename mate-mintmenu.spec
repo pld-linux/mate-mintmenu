@@ -1,15 +1,14 @@
 Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
-Version:	5.9.1
-Release:	2
+Version:	5.9.7
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
-# Source0-md5:	514377f50ec415bb4d1d6db9672ba070
+# Source0-md5:	620b5a719a8b9d2787500a3a9eeb0387
 Patch0:		%{name}-icon.patch
 Patch1:		%{name}-disable-apt.patch
-Patch2:		mate-menus-1.22.patch
 URL:		https://github.com/linuxmint/mintmenu
 BuildRequires:	sed >= 4.0
 BuildRequires:	tar >= 1:1.22
@@ -27,6 +26,8 @@ Requires:	python-modules
 Requires:	python-pygobject3
 Requires:	python-pyxdg
 Requires:	python-setproctitle
+Requires:	python-xapp
+Requires:	python-xapps-overrides
 Requires:	xdg-utils
 Suggests:	python-pyinotify
 BuildArch:	noarch
@@ -42,21 +43,19 @@ Zaawansowane menu dla MATE.
 %setup -qc
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 mv mintmenu/* .
 
-%{__sed} -i 's,version = commands.getoutput("/usr/lib/linuxmint/common/version.py mintmenu"),version = "%{version}",' usr/lib/linuxmint/mintMenu/mintMenu.py
-grep -rl '%{_prefix}/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,%{_prefix}/lib/linuxmint/mintMenu,%{_datadir}/%{name},g'
+%{__sed} -i 's,__DEB_VERSION__,%{version},' usr/lib/linuxmint/mintMenu/mintMenu.py
+grep -rl 'usr/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,usr/lib/linuxmint/mintMenu,%{_datadir}/%{name},g'
+grep -rl 'usr/share/linuxmint/mintmenu' usr | xargs %{__sed} -i 's,usr/share/linuxmint/mintmenu,%{_datadir}/%{name},g'
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}}
 cp -pr usr/lib/linuxmint/mintMenu $RPM_BUILD_ROOT%{_datadir}/%{name}
+cp -pr usr/share/linuxmint/mintmenu/*.ui $RPM_BUILD_ROOT%{_datadir}/%{name}
 cp -pr usr/share/{dbus-1,glib-2.0,man,mate-panel,pixmaps} $RPM_BUILD_ROOT%{_datadir}
 install -p usr/bin/mintmenu $RPM_BUILD_ROOT%{_bindir}
-
-# (build time) to compile *.py
-%{__rm} $RPM_BUILD_ROOT%{_datadir}/%{name}/compile.py
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,18 +72,16 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/applications.list
 %{_datadir}/%{name}/keybinding.py
-%{_datadir}/%{name}/mintMenuConfig.glade
-%attr(755,root,root) %{_datadir}/%{name}/mintMenuConfig.py
-%{_datadir}/%{name}/mintMenu.glade
 %attr(755,root,root) %{_datadir}/%{name}/mintMenu.py
+%attr(755,root,root) %{_datadir}/%{name}/preferences.py
 %dir %{_datadir}/%{name}/plugins
-%{_datadir}/%{name}/plugins/*.glade
 %{_datadir}/%{name}/plugins/*.py
 %{_datadir}/%{name}/pointerMonitor.py
 %{_datadir}/%{name}/popup.xml
 %{_datadir}/%{name}/search_engines
 %{_datadir}/%{name}/*.png
 %{_datadir}/%{name}/*.svg
+%{_datadir}/%{name}/*.ui
 %{_datadir}/dbus-1/services/org.mate.panel.applet.MintMenuAppletFactory.service
 %{_datadir}/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml
 %{_mandir}/man1/mintmenu.1*
