@@ -48,6 +48,7 @@ mv mintmenu/* .
 %{__sed} -i 's,__DEB_VERSION__,%{version},' usr/lib/linuxmint/mintMenu/mintMenu.py
 grep -rl 'usr/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,usr/lib/linuxmint/mintMenu,%{_datadir}/%{name},g'
 grep -rl 'usr/share/linuxmint/mintmenu' usr | xargs %{__sed} -i 's,usr/share/linuxmint/mintmenu,%{_datadir}/%{name},g'
+%{__sed} -i 's,^#!.*python.*,#!%{__python},' usr/lib/linuxmint/mintMenu/{,plugins/}*.py
 
 %install
 rm -rf $RPM_BUILD_ROOT
