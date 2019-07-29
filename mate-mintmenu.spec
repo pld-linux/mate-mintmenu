@@ -1,12 +1,12 @@
 Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
-Version:	5.9.7
+Version:	5.9.8
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
-# Source0-md5:	620b5a719a8b9d2787500a3a9eeb0387
+# Source0-md5:	b0563b22aa2a8d4b8a9ca962f4312f4b
 Patch0:		%{name}-icon.patch
 Patch1:		%{name}-disable-apt.patch
 URL:		https://github.com/linuxmint/mintmenu
@@ -19,7 +19,6 @@ Requires:	gvfs
 Requires:	mate-desktop-libs >= 1.18.0
 Requires:	mate-menus-libs >= 1.22.0
 Requires:	mate-panel >= 1.18.0
-Requires:	mozo
 Requires:	python-Xlib
 Requires:	python-configobj
 Requires:	python-modules
@@ -29,6 +28,7 @@ Requires:	python-setproctitle
 Requires:	python-xapp
 Requires:	python-xapps-overrides
 Requires:	xdg-utils
+Suggests:	mozo
 Suggests:	python-pyinotify
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -79,6 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/plugins/*.py
 %{_datadir}/%{name}/pointerMonitor.py
 %{_datadir}/%{name}/popup.xml
+%{_datadir}/%{name}/popup-without-edit.xml
 %{_datadir}/%{name}/search_engines
 %{_datadir}/%{name}/*.png
 %{_datadir}/%{name}/*.svg
