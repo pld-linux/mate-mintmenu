@@ -43,12 +43,18 @@ Zaawansowane menu dla MATE.
 %setup -qc
 %patch0 -p1
 %patch1 -p1
-mv mintmenu/* .
+# in case of patching fuzz
+rm -f mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml.orig
+
+%{__mv} mintmenu/* .
 
 %{__sed} -i 's,__DEB_VERSION__,%{version},' usr/lib/linuxmint/mintMenu/mintMenu.py
 grep -rl 'usr/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,usr/lib/linuxmint/mintMenu,%{_datadir}/%{name},g'
 grep -rl 'usr/share/linuxmint/mintmenu' usr | xargs %{__sed} -i 's,usr/share/linuxmint/mintmenu,%{_datadir}/%{name},g'
 %{__sed} -i 's,^#!.*python.*,#!%{__python},' usr/lib/linuxmint/mintMenu/{,plugins/}*.py
+
+# cleanup
+%{__rm} -r usr/lib/linuxmint/mintMenu/__pycache__
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -86,6 +92,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/*.ui
 %{_datadir}/dbus-1/services/org.mate.panel.applet.MintMenuAppletFactory.service
 %{_datadir}/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml
-%{_mandir}/man1/mintmenu.1*
 %{_datadir}/mate-panel/applets/org.mate.panel.MintMenuApplet.mate-panel-applet
+%{_mandir}/man1/mintmenu.1*
 %{_pixmapsdir}/mintmenu.svg
