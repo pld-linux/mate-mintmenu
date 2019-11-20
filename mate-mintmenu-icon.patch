@@ -5,7 +5,7 @@ diff -ru mate-mintmenu-5.9.1/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.m
      </key>
  
      <key type="s" name="applet-icon">
--      <default>"/usr/share/icons/hicolor/scalable/apps/linuxmint-logo-5.svg"</default>
+-      <default>"linuxmint-logo-filled-ring"</default>
 +      <default>"/usr/share/pixmaps/mintmenu.svg"</default>
        <summary></summary>
        <description></description>
