@@ -1,12 +1,12 @@
 Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
-Version:	6.0.3
+Version:	6.0.3.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
-# Source0-md5:	83715e7b612d840b80848b0e3f4ae49c
+# Source0-md5:	cdccbc279ad8df5b59e14bd40fc34d7b
 Patch0:		%{name}-icon.patch
 Patch1:		%{name}-disable-apt.patch
 URL:		https://github.com/linuxmint/mintmenu
@@ -52,8 +52,6 @@ rm -f mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml.ori
 grep -rl 'usr/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,usr/lib/linuxmint/mintMenu,%{_datadir}/%{name},g'
 grep -rl 'usr/share/linuxmint/mintmenu' usr | xargs %{__sed} -i 's,usr/share/linuxmint/mintmenu,%{_datadir}/%{name},g'
 %{__sed} -i 's,^#!.*python.*,#!%{__python},' usr/lib/linuxmint/mintMenu/{,plugins/}*.py
-
-%{__rm} -r usr/lib/linuxmint/mintMenu/__pycache__
 
 %install
 rm -rf $RPM_BUILD_ROOT
