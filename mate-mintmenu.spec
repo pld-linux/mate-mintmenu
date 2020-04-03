@@ -1,12 +1,12 @@
 Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
-Version:	6.0.3.1
+Version:	6.0.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
-# Source0-md5:	cdccbc279ad8df5b59e14bd40fc34d7b
+# Source0-md5:	f20507ac043864b52562cdd1347b5843
 Patch0:		%{name}-icon.patch
 Patch1:		%{name}-disable-apt.patch
 URL:		https://github.com/linuxmint/mintmenu
@@ -19,17 +19,17 @@ Requires:	gvfs
 Requires:	mate-desktop-libs >= 1.18.0
 Requires:	mate-menus-libs >= 1.22.0
 Requires:	mate-panel >= 1.18.0
-Requires:	python-Xlib
-Requires:	python-configobj
-Requires:	python-modules
-Requires:	python-pygobject3
-Requires:	python-pyxdg
-Requires:	python-setproctitle
-Requires:	python-xapp
-Requires:	python-xapps-overrides
+Requires:	python3-Xlib
+Requires:	python3-configobj
+Requires:	python3-modules
+Requires:	python3-pygobject3
+Requires:	python3-pyxdg
+Requires:	python3-setproctitle
+Requires:	python3-xapp
+Requires:	python3-xapps-overrides
 Requires:	xdg-utils
 Suggests:	mozo
-Suggests:	python-pyinotify
+Suggests:	python3-pyinotify
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -51,7 +51,7 @@ rm -f mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml.ori
 %{__sed} -i 's,__DEB_VERSION__,%{version},' usr/lib/linuxmint/mintMenu/mintMenu.py
 grep -rl 'usr/lib/linuxmint/mintMenu' usr | xargs %{__sed} -i 's,usr/lib/linuxmint/mintMenu,%{_datadir}/%{name},g'
 grep -rl 'usr/share/linuxmint/mintmenu' usr | xargs %{__sed} -i 's,usr/share/linuxmint/mintmenu,%{_datadir}/%{name},g'
-%{__sed} -i 's,^#!.*python.*,#!%{__python},' usr/lib/linuxmint/mintMenu/{,plugins/}*.py
+%{__sed} -i 's,^#!.*python.*,#!%{__python3},' usr/lib/linuxmint/mintMenu/{,plugins/}*.py
 
 %install
 rm -rf $RPM_BUILD_ROOT
