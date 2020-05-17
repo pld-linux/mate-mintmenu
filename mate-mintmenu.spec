@@ -2,7 +2,7 @@ Summary:	Advanced MATE menu
 Summary(pl.UTF-8):	Zaawansowane menu dla MATE
 Name:		mate-mintmenu
 Version:	6.0.4
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://packages.linuxmint.com/pool/main/m/mintmenu/mintmenu_%{version}.tar.xz
@@ -25,7 +25,6 @@ Requires:	python3-modules
 Requires:	python3-pygobject3
 Requires:	python3-pyxdg
 Requires:	python3-setproctitle
-Requires:	python3-xapp
 Requires:	python3-xapps-overrides
 Requires:	xdg-utils
 Suggests:	mozo
