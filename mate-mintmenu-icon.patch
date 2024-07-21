@@ -1,11 +1,17 @@
-diff -ru mate-mintmenu-5.9.1/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml mate-mintmenu-5.9.0/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml
---- mate-mintmenu-5.9.1/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml	2018-11-30 21:16:31.000000000 +0100
-+++ mate-mintmenu-5.9.0/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml	2018-12-01 14:41:39.171967989 +0100
-@@ -57,7 +57,7 @@
+--- mate-mintmenu-6.1.8/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml.orig	2024-07-21 19:52:08.838709644 +0200
++++ mate-mintmenu-6.1.8/mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml	2024-07-21 20:39:58.006499361 +0200
+@@ -51,13 +51,13 @@
      </key>
  
      <key type="s" name="applet-icon">
--      <default>"linuxmint-logo-filled-ring"</default>
+-      <default>"linuxmint-logo-ring-symbolic"</default>
++      <default>"/usr/share/pixmaps/mintmenu.svg"</default>
+       <summary></summary>
+       <description></description>
+     </key>
+ 
+     <key type="s" name="default-applet-icon">
+-      <default>"linuxmint-logo-ring-symbolic"</default>
 +      <default>"/usr/share/pixmaps/mintmenu.svg"</default>
        <summary></summary>
        <description></description>
