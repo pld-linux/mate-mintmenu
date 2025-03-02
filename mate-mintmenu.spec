@@ -40,8 +40,8 @@ Zaawansowane menu dla MATE.
 
 %prep
 %setup -qc
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 # in case of patching fuzz
 rm -f mintmenu/usr/share/glib-2.0/schemas/com.linuxmint.mintmenu.gschema.xml.orig
 
